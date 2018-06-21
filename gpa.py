@@ -20,6 +20,6 @@ total_points = 0
 for grade in map(lambda grade: grade.split(':'), argv[1:]):
     grade.append(3.0)
     total_credits += float(grade[1])
-    total_points += grade_values[grade[0]] * float(grade[1])
+    total_points += grade_values[grade[0].lower()] * float(grade[1])
 
 print('{0:.2f}'.format(total_points / total_credits))
