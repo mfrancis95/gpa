@@ -1,4 +1,8 @@
-from sys import argv
+from argparse import ArgumentParser
+
+parser = ArgumentParser('gpa')
+parser.add_argument('grade', nargs = '+')
+args = parser.parse_args()
 
 grade_values = {
     'a': 4.0,
@@ -17,7 +21,7 @@ grade_values = {
 total_credits = 0
 total_points = 0
 
-for grade in map(lambda grade: grade.split(':'), argv[1:]):
+for grade in (grade.split(':') for grade in args.grade):
     grade.append(3.0)
     total_credits += float(grade[1])
     total_points += grade_values[grade[0].lower()] * float(grade[1])
